@@ -53,7 +53,19 @@ public class FacturaNegocioTest {
 		assertEquals(35,minutosSalida);
 	}
 	@Test
-	public void diferenciaDeHorasTest() {
+	public void diferenciaDeHorasIgualesTest() {
+		//arrange
+		IFacturaNegocio factura = new FacturaNegocio();
+		String horaEntrada="10:00";
+		String horaSalida="14:00";
+
+		//act
+		int resultado = factura.diferenciaDeHoras(horaEntrada, horaSalida);
+		//assert
+		assertEquals(4,resultado);
+	}
+	@Test
+	public void diferenciaDeHorasDistintasTest() {
 		//arrange
 		IFacturaNegocio factura = new FacturaNegocio();
 		String horaEntrada="10:00";

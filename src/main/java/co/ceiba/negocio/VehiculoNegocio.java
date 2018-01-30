@@ -3,45 +3,36 @@ package co.ceiba.negocio;
 import co.ceiba.interfaces.IVehiculoNegocio;
 
 public class VehiculoNegocio implements IVehiculoNegocio{
-	
-	public int calcularPrecioMoto(int numHoras,int cilindraje) {
-		int precio = 0;
+
+	@Override
+	public int calcularPrecio(int numHoras, int cilindraje, String tipo) {
+		int dias = 0;
 		if(numHoras >= 9) {
-			if(numHoras < 24)
-				precio=4000;
+			if(numHoras < 24) {
+				numHoras=0;
+				dias+=1;
+			}
 			else {
-				precio=4000*(numHoras/24);
-				numHoras -= 24*(precio/4000);
-				if(numHoras < 9)
-					precio += (numHoras)*500;
-				else
-					precio += 4000;
+				dias= numHoras/24;
+				numHoras -= 24*dias;
+				if(numHoras >= 9) {
+					numHoras = 0;
+					dias += 1;
+				}
 			}
 		}
-		else
-			precio = numHoras*500;
-		if(cilindraje > 500) {
+		int precio = calcularPrecioTipo(tipo, dias, numHoras);
+		if((tipo.equals("Moto"))&&(cilindraje > 500)) {
 			precio+=2000;
 		}
 		return precio;
 	}
-	
-	public int calcularPrecioCarro(int numHoras) {
-		int precio = 0;
-		if(numHoras >= 9) {
-			if(numHoras < 24)
-				precio=8000;
-			else {
-				precio=8000*(numHoras/24);
-				numHoras -= 24*(precio/8000);
-				if(numHoras < 9)
-					precio += (numHoras)*1000;
-				else
-					precio += 8000;
-			}
-		}
+
+	@Override
+	public int calcularPrecioTipo(String tipo, int dias, int horas) {
+		if(tipo.equals("Carro"))
+			return (dias*8000)+(horas*1000);
 		else
-			precio = numHoras*100;
-		return precio;
-	}
+			return (dias*4000)+(horas*500);
+	}	
 }

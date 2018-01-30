@@ -10,25 +10,67 @@ import co.ceiba.negocio.VehiculoNegocio;
 
 public class VehiculoNegocioTest {
 	@Test
-	public void calcularPrecioMotoTest() {
+	public void calcularPrecioTest() {
 		//arrange
 		VehiculoNegocio vehiculo = new VehiculoNegocio();		
 		int numHoras = 10;
 		int cilindraje = 650;
+		String tipo = "Moto";
 		//act
-		int totalMoto = vehiculo.calcularPrecioMoto(numHoras,cilindraje);
+		int totalMoto = vehiculo.calcularPrecio(numHoras,cilindraje,tipo);
 		//assert
 		assertEquals(6000, totalMoto);
 	}
 	
 	@Test
-	public void calcularPrecioCarroTest() {
+	public void calcularPrecioTest2(){
 		//arrange
 		VehiculoNegocio vehiculo = new VehiculoNegocio();		
-		int numHoras = 27;
+		int numHoras = 32;
+		int cilindraje = 650;
+		String tipo = "Moto";		
 		//act
-		int totalCarro = vehiculo.calcularPrecioCarro(numHoras);
+		int totalMoto = vehiculo.calcularPrecio(numHoras,cilindraje,tipo);
 		//assert
-		assertEquals(11000, totalCarro);
+		assertEquals(10000, totalMoto);
+	}
+	
+	@Test
+	public void calcularPrecioTest3(){
+		//arrange
+		VehiculoNegocio vehiculo = new VehiculoNegocio();		
+		int numHoras = 35;
+		int cilindraje = 150;
+		String tipo = "Carro";
+		//act
+		int totalMoto = vehiculo.calcularPrecio(numHoras,cilindraje,tipo);
+		//assert
+		assertEquals(16000, totalMoto);
+	}
+	
+	@Test
+	public void calcularPrecioTest4(){
+		//arrange
+		VehiculoNegocio vehiculo = new VehiculoNegocio();		
+		int numHoras = 25;
+		int cilindraje = 150;
+		String tipo = "Carro";
+		//act
+		int totalMoto = vehiculo.calcularPrecio(numHoras,cilindraje,tipo);
+		//assert
+		assertEquals(9000, totalMoto);
+	}
+	
+	@Test
+	public void calcularPrecioTest5(){
+		//arrange
+		VehiculoNegocio vehiculo = new VehiculoNegocio();		
+		int numHoras = 5;
+		int cilindraje = 150;
+		String tipo = "Moto";
+		//act
+		int totalMoto = vehiculo.calcularPrecio(numHoras,cilindraje,tipo);
+		//assert
+		assertEquals(2500, totalMoto);
 	}
 }

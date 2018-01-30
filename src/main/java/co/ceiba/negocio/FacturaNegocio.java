@@ -26,22 +26,21 @@ public class FacturaNegocio implements IFacturaNegocio{
 	}
 	
 	public int diferenciaDeHoras(String horaEntrada,String horaSalida) {
-		int totalEntrada = (horaEntradaAEntero(horaEntrada)*60)+minutosHoraEntradaAEntero(horaEntrada);
-		int totalSalida = (horaSalidaAEntero(horaSalida)*60)+minutosHoraSalidaAEntero(horaSalida);
-		int promediarDiferenciaDeHoras = 60*(((totalSalida-totalEntrada)/60)+1);
-		if((promediarDiferenciaDeHoras - (totalSalida-totalEntrada))<=30)
-			return ((totalSalida-totalEntrada)/60)+1;
+		int horaEntradaInt = horaEntradaAEntero(horaEntrada);
+		int minutosEntrada = minutosHoraEntradaAEntero(horaEntrada);
+		int horaSalidaInt = horaSalidaAEntero(horaSalida);
+		int minutosSalida = minutosHoraSalidaAEntero(horaSalida);
+		if(minutosEntrada==minutosSalida)
+			return horaSalidaInt-horaEntradaInt;
 		else
-			return (totalSalida-totalEntrada)/60;
+			return (horaSalidaInt-horaEntradaInt)+1;
+			
 	}
 	
 	public void cobrar(Vehiculo vehiculo, Parqueadero parqueadero,ParqueaderoNegocio parqueaderoN,VehiculoNegocio vehiculoN,String horaEntrada,String horaSalida,int dia) {
 		if(parqueaderoN.hayCupo(vehiculo.getTipo(),parqueadero.getCapacidadCarros(),parqueadero.getCapacidadMotos())
 				&&(parqueaderoN.vehiculoPuedeEntrar(vehiculo.getPlaca(),dia))) {
-			if(vehiculo.getTipo().equals("Moto")) 
-				vehiculoN.calcularPrecioMoto(diferenciaDeHoras(horaEntrada, horaSalida),vehiculo.getCilindraje());
-			if(vehiculo.getTipo().equals("Carro"))
-				vehiculoN.calcularPrecioCarro(diferenciaDeHoras(horaEntrada, horaSalida));
+			vehiculoN.calcularPrecio(diferenciaDeHoras(horaEntrada, horaSalida),vehiculo.getCilindraje(),vehiculo.getTipo());	
 		}
 	}	
 }

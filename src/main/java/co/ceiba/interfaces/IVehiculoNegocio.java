@@ -1,7 +1,7 @@
 package co.ceiba.interfaces;
 
 public interface IVehiculoNegocio {
-	public int calcularPrecioMoto(int numHoras,int cilindraje);
+	public int calcularPrecio(int numHoras,int cilindraje,String tipo);
 	
-	public int calcularPrecioCarro(int numHoras);
+	public int calcularPrecioTipo(String tipo,int dias,int horas);
 }
