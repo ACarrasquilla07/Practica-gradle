@@ -5,15 +5,16 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-
+import co.ceiba.interfaces.IParqueaderoNegocio;
 import co.ceiba.negocio.ParqueaderoNegocio;
 
 public class ParqueaderoNegocioTest {
-
+	
+	private IParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
+	
 	@Test
 	public void vehiculoPuedeEntrarTest() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		int dia = 0;
 		String placa = "AAA333";
 		//act
@@ -25,7 +26,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void vehiculoPuedeEntrarTest2() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		int dia = 0;
 		String placa = "BAA333";
 		//act
@@ -37,7 +37,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void vehiculoNoPuedeEntrarTest() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		int dia = 2;
 		String placa = "AAA333";
 		//act
@@ -49,7 +48,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void vehiculoPuedeEntrarTest4() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		int dia = 1;
 		String placa = "aAA333";
 		//act
@@ -61,7 +59,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void hayCupoTest() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		String tipo = "Carro";
 		//act
 		boolean hayCupo = parqueadero.hayCupo(tipo,1,0);
@@ -72,7 +69,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void noHayCupoTest() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		String tipo = "Moto";
 		//act
 		boolean hayCupo = parqueadero.hayCupo(tipo,1,0);
@@ -83,7 +79,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void noHayCupoTest2() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		String tipo = "Carro";
 		//act
 		boolean hayCupo = parqueadero.hayCupo(tipo,0,0);
@@ -94,7 +89,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void ingresarVehiculoTest() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		String tipo = "Carro";
 		//act
 		int resultado = parqueadero.ingresarVehiculo(tipo,1,0);
@@ -105,7 +99,6 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void ingresarVehiculoTest2() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		String tipo = "Moto";
 		//act
 		int resultado = parqueadero.ingresarVehiculo(tipo,1,4);
@@ -116,13 +109,62 @@ public class ParqueaderoNegocioTest {
 	@Test
 	public void noIngresarVehiculoTest() {
 		//arrange
-		ParqueaderoNegocio parqueadero = new ParqueaderoNegocio();
 		String tipo = "Moto";
 		//act
 		int resultado = parqueadero.ingresarVehiculo(tipo,1,0);
 		//assert
 		assertEquals(0,resultado);
 	}
-
-
+	
+	@Test
+	public void sacarVehiculoTest() {
+		//arrange
+		int precioParqueo = 5000;
+		String tipo = "Carro";
+		int capacidadCarros = 20;
+		int capacidadMotos = 10;
+		//act
+		int capacidadActualizada = parqueadero.sacarVehiculo(tipo, precioParqueo, capacidadCarros, capacidadMotos);
+		//assert
+		assertEquals(19,capacidadActualizada);
+	}
+	
+	@Test
+	public void sacarVehiculoTest2() {
+		//arrange
+		int precioParqueo = 0;
+		String tipo = "Carro";
+		int capacidadCarros = 20;
+		int capacidadMotos = 10;
+		//act
+		int capacidadActualizada = parqueadero.sacarVehiculo(tipo, precioParqueo, capacidadCarros, capacidadMotos);
+		//assert
+		assertEquals(20,capacidadActualizada);
+	}
+	
+	@Test
+	public void sacarVehiculoTest3() {
+		//arrange
+		int precioParqueo = 5000;
+		String tipo = "Moto";
+		int capacidadCarros = 20;
+		int capacidadMotos = 10;
+		//act
+		int capacidadActualizada = parqueadero.sacarVehiculo(tipo, precioParqueo, capacidadCarros, capacidadMotos);
+		//assert
+		assertEquals(9,capacidadActualizada);
+	}
+	
+	@Test
+	public void sacarVehiculoTest4() {
+		//arrange
+		int precioParqueo = 0;
+		String tipo = "Moto";
+		int capacidadCarros = 20;
+		int capacidadMotos = 10;
+		//act
+		int capacidadActualizada = parqueadero.sacarVehiculo(tipo, precioParqueo, capacidadCarros, capacidadMotos);
+		//assert
+		assertEquals(10,capacidadActualizada);
+	}
 }

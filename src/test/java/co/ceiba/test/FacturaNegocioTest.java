@@ -4,15 +4,22 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
+import co.ceiba.dominio.Parqueadero;
+import co.ceiba.dominio.Vehiculo;
 import co.ceiba.interfaces.IFacturaNegocio;
 import co.ceiba.negocio.FacturaNegocio;
+import co.ceiba.negocio.ParqueaderoNegocio;
+import co.ceiba.negocio.VehiculoNegocio;
+
 
 public class FacturaNegocioTest {
-
+	
+	private IFacturaNegocio factura=new FacturaNegocio();
+	
 	@Test
 	public void horaEntradaAEntero() {
 		//arrange
-		IFacturaNegocio factura= new FacturaNegocio();;
 		String horaEntrada="10:00";
 		//act
 		int horaEntradaInt = factura.horaEntradaAEntero(horaEntrada);
@@ -23,7 +30,6 @@ public class FacturaNegocioTest {
 	@Test
 	public void horaSalidaAEntero() {
 		//arrange
-		IFacturaNegocio factura = new FacturaNegocio();
 		String horaSalida="12:00";
 		//act
 		int horaSalidaInt = factura.horaSalidaAEntero(horaSalida);
@@ -34,7 +40,6 @@ public class FacturaNegocioTest {
 	@Test
 	public void minutosHoraEntradaAEntero() {
 		//arrange
-		IFacturaNegocio factura = new FacturaNegocio();
 		String horaEntrada="10:00";
 		//act
 		int minutosEntrada = factura.minutosHoraEntradaAEntero(horaEntrada);
@@ -44,8 +49,7 @@ public class FacturaNegocioTest {
 	
 	@Test
 	public void minutosHoraSalidaAEntero() {
-		//arrange
-		IFacturaNegocio factura = new FacturaNegocio();
+		//arrange		
 		String horaSalida="14:35";
 		//act
 		int minutosSalida = factura.minutosHoraSalidaAEntero(horaSalida);
@@ -55,7 +59,6 @@ public class FacturaNegocioTest {
 	@Test
 	public void diferenciaDeHorasIgualesTest() {
 		//arrange
-		IFacturaNegocio factura = new FacturaNegocio();
 		String horaEntrada="10:00";
 		String horaSalida="14:00";
 
@@ -67,7 +70,6 @@ public class FacturaNegocioTest {
 	@Test
 	public void diferenciaDeHorasDistintasTest() {
 		//arrange
-		IFacturaNegocio factura = new FacturaNegocio();
 		String horaEntrada="10:00";
 		String horaSalida="14:35";
 
@@ -76,5 +78,52 @@ public class FacturaNegocioTest {
 		//assert
 		assertEquals(5,resultado);
 	}
-
+	
+	@Test
+	public void terminarFacturaTest() {
+		//arrange
+		Vehiculo vehiculo = new Vehiculo("adfef", "Carro", 1500);
+		Parqueadero parqueadero = new Parqueadero(1,20,10);
+		ParqueaderoNegocio parqueaderoN = new ParqueaderoNegocio();
+		VehiculoNegocio vehiculoN = new VehiculoNegocio();
+		String horaEntrada="10:00";
+		String horaSalida="14:35";
+		int dia = 0;
+		//act
+		int precio = factura.terminarFactura(vehiculo, parqueadero, parqueaderoN, vehiculoN, horaEntrada, horaSalida, dia);
+		//assert
+		assertEquals(5000,precio);
+	}
+	
+	@Test
+	public void terminarFacturaTest2() {
+		//arrange
+		Vehiculo vehiculo = new Vehiculo("adfef", "Carro", 1500);
+		Parqueadero parqueadero = new Parqueadero(1,20,10);
+		ParqueaderoNegocio parqueaderoN = new ParqueaderoNegocio();
+		VehiculoNegocio vehiculoN = new VehiculoNegocio();
+		String horaEntrada="10:00";
+		String horaSalida="14:35";
+		int dia = 2;
+		//act
+		int precio = factura.terminarFactura(vehiculo, parqueadero, parqueaderoN, vehiculoN, horaEntrada, horaSalida, dia);
+		//assert
+		assertEquals(0,precio);
+	}
+	
+	@Test
+	public void terminarFacturaTest3() {
+		//arrange
+		Vehiculo vehiculo = new Vehiculo("adfef", "Carro", 1500);
+		Parqueadero parqueadero = new Parqueadero(1,0,10);
+		ParqueaderoNegocio parqueaderoN = new ParqueaderoNegocio();
+		VehiculoNegocio vehiculoN = new VehiculoNegocio();
+		String horaEntrada="10:00";
+		String horaSalida="14:35";
+		int dia = 2;
+		//act
+		int precio = factura.terminarFactura(vehiculo, parqueadero, parqueaderoN, vehiculoN, horaEntrada, horaSalida, dia);
+		//assert
+		assertEquals(0,precio);
+	}
 }

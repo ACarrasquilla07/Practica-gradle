@@ -37,10 +37,12 @@ public class FacturaNegocio implements IFacturaNegocio{
 			
 	}
 	
-	public void cobrar(Vehiculo vehiculo, Parqueadero parqueadero,ParqueaderoNegocio parqueaderoN,VehiculoNegocio vehiculoN,String horaEntrada,String horaSalida,int dia) {
+	public int terminarFactura(Vehiculo vehiculo, Parqueadero parqueadero,ParqueaderoNegocio parqueaderoN,VehiculoNegocio vehiculoN,String horaEntrada,String horaSalida,int dia) {
 		if(parqueaderoN.hayCupo(vehiculo.getTipo(),parqueadero.getCapacidadCarros(),parqueadero.getCapacidadMotos())
 				&&(parqueaderoN.vehiculoPuedeEntrar(vehiculo.getPlaca(),dia))) {
-			vehiculoN.calcularPrecio(diferenciaDeHoras(horaEntrada, horaSalida),vehiculo.getCilindraje(),vehiculo.getTipo());	
+			return vehiculoN.calcularPrecio(diferenciaDeHoras(horaEntrada, horaSalida),vehiculo.getCilindraje(),vehiculo.getTipo());	
 		}
+		else 
+			return 0;
 	}	
 }

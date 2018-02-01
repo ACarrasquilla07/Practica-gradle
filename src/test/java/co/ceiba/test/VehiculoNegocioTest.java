@@ -5,14 +5,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import co.ceiba.dominio.Vehiculo;
+import co.ceiba.interfaces.IVehiculoNegocio;
 import co.ceiba.negocio.VehiculoNegocio;
 
 
 public class VehiculoNegocioTest {
+	
+	private IVehiculoNegocio vehiculo = new VehiculoNegocio();
+	
 	@Test
 	public void calcularPrecioTest() {
 		//arrange
-		VehiculoNegocio vehiculo = new VehiculoNegocio();		
 		int numHoras = 10;
 		int cilindraje = 650;
 		String tipo = "Moto";
@@ -25,7 +28,6 @@ public class VehiculoNegocioTest {
 	@Test
 	public void calcularPrecioTest2(){
 		//arrange
-		VehiculoNegocio vehiculo = new VehiculoNegocio();		
 		int numHoras = 32;
 		int cilindraje = 650;
 		String tipo = "Moto";		
@@ -38,7 +40,6 @@ public class VehiculoNegocioTest {
 	@Test
 	public void calcularPrecioTest3(){
 		//arrange
-		VehiculoNegocio vehiculo = new VehiculoNegocio();		
 		int numHoras = 35;
 		int cilindraje = 150;
 		String tipo = "Carro";
@@ -51,7 +52,6 @@ public class VehiculoNegocioTest {
 	@Test
 	public void calcularPrecioTest4(){
 		//arrange
-		VehiculoNegocio vehiculo = new VehiculoNegocio();		
 		int numHoras = 25;
 		int cilindraje = 150;
 		String tipo = "Carro";
@@ -64,7 +64,6 @@ public class VehiculoNegocioTest {
 	@Test
 	public void calcularPrecioTest5(){
 		//arrange
-		VehiculoNegocio vehiculo = new VehiculoNegocio();		
 		int numHoras = 5;
 		int cilindraje = 150;
 		String tipo = "Moto";

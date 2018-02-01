@@ -16,6 +16,6 @@ public interface IFacturaNegocio {
 	
 	public int diferenciaDeHoras(String horaEntrada,String horaSalida);
 	
-	public void cobrar(Vehiculo vehiculo, Parqueadero parqueadero,ParqueaderoNegocio parqueaderoN,
+	public int terminarFactura(Vehiculo vehiculo, Parqueadero parqueadero,ParqueaderoNegocio parqueaderoN,
 			VehiculoNegocio vehiculoN,String horaEntrada,String horaSalida,int dia);
 }

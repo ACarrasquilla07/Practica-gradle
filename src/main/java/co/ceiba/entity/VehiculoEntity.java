@@ -9,11 +9,11 @@ import javax.persistence.Table;
 @Table(name = "vehiculo")
 public class VehiculoEntity {
 	@Id
-	@Column (name = "placa")
+	@Column (name = "placa",nullable = false)
 	private String placa;
-	@Column(name = "tipo")
+	@Column(name = "tipo",nullable = false)
 	private String tipo;
-	@Column (name = "cilindraje")
+	@Column (name = "cilindraje",nullable = false)
 	private int cilindraje;
 	public String getPlaca() {
 		return placa;

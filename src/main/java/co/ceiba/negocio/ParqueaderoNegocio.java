@@ -1,6 +1,9 @@
 package co.ceiba.negocio;
 
-public class ParqueaderoNegocio {
+import co.ceiba.interfaces.IParqueaderoNegocio;
+
+public class ParqueaderoNegocio implements IParqueaderoNegocio{
+	@Override
 	public boolean vehiculoPuedeEntrar(String placa ,int dia) {
 		boolean mensaje;
 		if((placa.charAt(0)=='A')||(placa.charAt(0)=='a')){
@@ -17,6 +20,7 @@ public class ParqueaderoNegocio {
 		return mensaje;
 	}
 	
+	@Override
 	public boolean hayCupo(String tipo,int capacidadCarros,int capacidadMotos) {
 		boolean vacio = true;
 		if(tipo.equals("Carro")&&(capacidadCarros == 0)) 
@@ -27,6 +31,7 @@ public class ParqueaderoNegocio {
 		return vacio;
 	}
 	
+	@Override
 	public int ingresarVehiculo(String tipo,int capacidadCarros,int capacidadMotos) {
 		if(hayCupo(tipo,capacidadCarros,capacidadMotos)) {
 			if(tipo.equals("Carro"))
@@ -36,6 +41,21 @@ public class ParqueaderoNegocio {
 		}
 		else {
 			return 0;
+		}
+	}
+
+	@Override
+	public int sacarVehiculo(String tipo,int precioParqueo,int capacidadCarros,int capacidadMotos) {
+		if(precioParqueo != 0)
+			if(tipo.equals("Carro"))
+				return capacidadCarros-1;
+			else
+				return capacidadMotos-1;
+		else {
+			if(tipo.equals("Carro"))
+				return capacidadCarros;
+			else
+				return capacidadMotos;
 		}
 	}
 }

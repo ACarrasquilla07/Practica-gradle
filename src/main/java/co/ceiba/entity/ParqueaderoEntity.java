@@ -9,13 +9,13 @@ import javax.persistence.Table;
 @Table(name = "parqueadero")
 public class ParqueaderoEntity {
 	@Id
-	@Column(name = "parqueadero_id")
+	@Column(name = "parqueadero_id",nullable = false)
 	private int parqueaderoId;
 	
-	@Column(name = "cupo_carros")
+	@Column(name = "cupo_carros",nullable = false)
 	private int capacidadCarros;
 	
-	@Column(name = "cupo_motos")
+	@Column(name = "cupo_motos",nullable = false)
 	private int capacidadMotos;
 
 	public int getParqueaderoId() {
