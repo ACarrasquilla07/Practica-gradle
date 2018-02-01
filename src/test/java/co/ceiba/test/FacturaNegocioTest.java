@@ -83,7 +83,7 @@ public class FacturaNegocioTest {
 	public void terminarFacturaTest() {
 		//arrange
 		Vehiculo vehiculo = new Vehiculo("adfef", "Carro", 1500);
-		Parqueadero parqueadero = new Parqueadero(1,20,10);
+		Parqueadero parqueadero = new Parqueadero("Parqueadero 47",20,10);
 		ParqueaderoNegocio parqueaderoN = new ParqueaderoNegocio();
 		VehiculoNegocio vehiculoN = new VehiculoNegocio();
 		String horaEntrada="10:00";
@@ -99,7 +99,7 @@ public class FacturaNegocioTest {
 	public void terminarFacturaTest2() {
 		//arrange
 		Vehiculo vehiculo = new Vehiculo("adfef", "Carro", 1500);
-		Parqueadero parqueadero = new Parqueadero(1,20,10);
+		Parqueadero parqueadero = new Parqueadero("Parqueadero 47",20,10);
 		ParqueaderoNegocio parqueaderoN = new ParqueaderoNegocio();
 		VehiculoNegocio vehiculoN = new VehiculoNegocio();
 		String horaEntrada="10:00";
@@ -115,7 +115,7 @@ public class FacturaNegocioTest {
 	public void terminarFacturaTest3() {
 		//arrange
 		Vehiculo vehiculo = new Vehiculo("adfef", "Carro", 1500);
-		Parqueadero parqueadero = new Parqueadero(1,0,10);
+		Parqueadero parqueadero = new Parqueadero("Parqueadero 47",0,10);
 		ParqueaderoNegocio parqueaderoN = new ParqueaderoNegocio();
 		VehiculoNegocio vehiculoN = new VehiculoNegocio();
 		String horaEntrada="10:00";

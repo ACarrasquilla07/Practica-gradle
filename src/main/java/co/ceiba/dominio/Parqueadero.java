@@ -1,7 +1,7 @@
 package co.ceiba.dominio;
 
 public class Parqueadero {
-	private int parqueaderoId;
+	private String parqueaderoId;
 	private int capacidadCarros;
 	private int capacidadMotos;
 	
@@ -9,19 +9,15 @@ public class Parqueadero {
 		super();
 	}
 
-	public Parqueadero(int parqueaderoId,int capacidadCarros, int capacidadMotos) {
+	public Parqueadero(String parqueaderoId,int capacidadCarros, int capacidadMotos) {
 		super();
 		this.parqueaderoId = parqueaderoId;
 		this.capacidadCarros = capacidadCarros;
 		this.capacidadMotos = capacidadMotos;
 	}
 	
-	public int getParqueaderoId() {
+	public String getParqueaderoId() {
 		return parqueaderoId;
-	}
-
-	public void setParqueaderoId(int parqueaderoId) {
-		this.parqueaderoId = parqueaderoId;
 	}
 
 	public int getCapacidadCarros() {

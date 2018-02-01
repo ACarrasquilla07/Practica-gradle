@@ -17,31 +17,4 @@ public class ParqueaderoEntity {
 	
 	@Column(name = "cupo_motos",nullable = false)
 	private int capacidadMotos;
-
-	public int getParqueaderoId() {
-		return parqueaderoId;
-	}
-
-	public void setParqueaderoId(int parqueaderoId) {
-		this.parqueaderoId = parqueaderoId;
-	}
-
-	public int getCapacidadCarros() {
-		return capacidadCarros;
-	}
-
-	public void setCapacidadCarros(int capacidadCarros) {
-		this.capacidadCarros = capacidadCarros;
-	}
-
-	public int getCapacidadMotos() {
-		return capacidadMotos;
-	}
-
-	public void setCapacidadMotos(int capacidadMotos) {
-		this.capacidadMotos = capacidadMotos;
-	}
-	
-	
-
 }
